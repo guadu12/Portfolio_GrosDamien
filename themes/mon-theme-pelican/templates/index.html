@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+    
+    {% include 'head.html' %}
+    
+    <body class="gap-3">
+		{% include 'header.html'%}
+
+
+        <section id="mes_competences" class="container-fluid d-flex flex-column align-items-center pt-3 pb-3">
+        <!-- <section id="mes_competences" class="container column align-items-center"> -->
+            <div id="titre_competences" class="pt-3"><h2>{{TITRE_COMPETENCES}}</h2></div>
+			<div id="les_competences" class="grid justify-content-center row-gap-3 column-gap-3  row pt-3">
+                {% set indice = 0 %}
+                {% for i in range(NUM_COMPETENCE | length) %}
+                    <div div={{NUM_COMPETENCE[i]}} class="col-5 pt-2 text-bg-secondary rounded-4 text-center">
+                        <a class="link-light">
+                            <h3>{{COMPETENCES[i][0]}}</h3>
+                            <ul>
+                                {% for titre in COMPETENCES[i][1] %}
+                                    <li>{{titre}}</li>
+                                {% endfor %}
+                            </ul>
+                        </a>
+                    </div>
+                {% endfor %}
+                </div>
+		</section>
+
+        <section id="realisations" class="container d-flex flex-column align-items-center pt-5 pb-3">
+			<div id="titre_Realisation" class="d-inline-flex pb-5">
+                <h2>{{TITRE_REALISATION}}</h2>
+            </div>
+            <section id="les_realisations" class=" d-flex flex-column gap-5">
+                {% if articles %}
+                <h3>Réalisation orienté developpement</h3>
+                    <div id ="real_slam" class="grid justify-content-center row-gap-3 column-gap-3  row pt-3">
+                        {% for article in articles_page.object_list %}
+                            {% if article.type == "SLAM" %}
+                                <a href="{{article.slug}}.html" class="col-5 pt-2 text-bg-secondary rounded-4 text-center"><div id={{article.slug}}>
+                                    {{article.summary}}
+                                </div></a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div id="real_sisr" class="grid justify-content-center row-gap-3 column-gap-3  row pt-3 pb-3">
+                        <h3>Réalisation orienté réseau</h3>
+                        {% for article in articles_page.object_list %}
+                            {% if article.type == "SISR" %}
+                                <a href="{{article.slug}}.html" class="col-5 pt-2 text-bg-secondary rounded-4 text-center"><div id={{article.slug}}>
+                                    {{article.summary}}
+                                </div></a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </section>
+		</section>
+		
+		{% include 'a propos.html'%}
+
+		{% include 'footer.html'%}
+        
+    </body>
+</html>

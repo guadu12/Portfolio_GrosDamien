@@ -1,0 +1,15 @@
+<footer id="bas" class="d-flex justify-content-around pt-3 pb-3 bg-dark text-white">
+			<div id="contact" class="d-flex flex-column ">
+                <h4>Contact</h4>
+                {% for titre  in CONTACT %}
+					<p>{{titre}}</p>
+				{% endfor %}
+			</div>
+            
+            <div id="contact2" class="d-flex flex-column ">
+				{% for titre  in ENTREPRISE %}
+					<p>{{titre}}</p>
+				{% endfor %}
+                <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png" alt="error">
+			</div>
+        </footer>

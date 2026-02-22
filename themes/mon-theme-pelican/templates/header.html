@@ -1,0 +1,12 @@
+<header>
+    <nav id = menu class="container-fluid text-bg-dark fixed-top justify-content-center">
+        <ul class="nav justify-content-center">
+            {% for lien, titre  in MENU %}
+            <li class="nav-item">
+                <a class="nav-link active link-light p-4" aria-current="page" href="{{lien}}">{{titre}}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </nav>
+    {% include 'presentation.html'%}
+</header>

@@ -1,0 +1,14 @@
+
+Acount s2/ ax2_axis201704
+Database ax2_axis201703
+192.168.6.50
+
+Drilonne
+
+rechercher comment generer le code sql avecle RAD
+- Commencer à crée les pages (sans code) -> paramètre -> 
+- création bouton et fenetre formation
+- Ajout de l'affichage des tables et tags dans les paramétrage
+-ajout sauveg	rde (type_chrono)
+-ajout page doc type form
+-ajout 

@@ -1,0 +1,279 @@
+###btn_sauv
+
+
+vMessage	est une chaîne	= ""
+sNomFichier	est une chaîne
+reqligne	est une chaîne
+exeligne est une Source de Données 
+
+verifDoc est un booléen
+
+//Create_repertoire_impressions("FORMATION", IDdocument, "")
+
+SI INT_doc_glob.Valeur = Vrai ALORS
+	verifDoc = 1
+SINON 
+	verifDoc = 0
+FIN
+
+
+SI Taille(Sai_Libelle) = 0 ALORS
+	vMessage += RC+" - Libellé"
+FIN
+
+SI Taille(Sai_date) = 0 ALORS
+	vMessage += RC+" - Date"
+FIN
+
+SI PAS Cbo_typeform..ValeurMémorisée > 0 ALORS
+	vMessage += RC+" - Type de formation"
+FIN
+
+SI cbo_etat = Null ALORS
+	vMessage += RC+" - Terminer"
+FIN
+
+SI Taille(vMessage) > 0  ALORS
+	Erreur("Veuillez saisir les champs suivants :"+vMessage)
+	RETOUR
+FIN
+
+//variable d'incrémentation de l'id
+id est un entier = Incremente_id("Formation", "form_id")
+//si la formation est ouvert en création ou modification
+SI IDdocument = -1 ALORS
+	reqligne = "INSERT INTO Formation (form_id, form_libelle, form_date, form_etat, Form_type, Formcl_id)"
+	reqligne += " VALUES ("+id+","+quote(Sai_Libelle)+", "+quote(Sai_date)+", "+cbo_etat+", "+Cbo_typeform+", "+quote(Ch_idClient)+");"
+	POUR TOUTE LIGNE DE Table_interlo
+		reqligne += " INSERT INTO Formation_interlocuteurs(Intcl_form, Form_intl)"
+		reqligne += " VALUES ("+Table_interlo.Id_interlo+","+id+")"
+	FIN
+SINON
+	reqligne = "UPDATE Formation SET form_libelle = "+quote(Sai_Libelle)+",  form_date = "+quote(Sai_date)+", form_etat = "+cbo_etat+", Form_type = "+Cbo_typeform
+	reqligne += ", Formcl_id = "+Ch_idClient
+	reqligne += " WHERE form_id = "+IDdocument+";"
+	//chaine qui verifie si interlocuteurs ajouter en double
+	rechDouble est un entier
+ 	verifDouble est un entier
+ 	valeur est un entier
+ 	
+	reqLigneInterlo est une chaîne 
+	exeLigneInterlo est une Source de Données 
+	POUR TOUTE LIGNE DE Table_interlo
+		reqLigneInterlo = "SELECT * FROM Formation_interlocuteurs WHERE Intcl_form = "+ Table_interlo.Id_interlo+" AND Form_intl = "+IDdocument
+		HExécuteRequêteSQL(exeLigneInterlo,NomSource,hRequêteSansCorrection,reqLigneInterlo)
+		HLitPremier(exeLigneInterlo)
+		Trace(HTrouve(exeLigneInterlo))
+		SI HTrouve(exeLigneInterlo) = Faux ALORS
+			reqligne += " INSERT INTO Formation_interlocuteurs(Intcl_form, Form_intl)"
+			reqligne += " VALUES ("+Table_interlo.Id_interlo+","+IDdocument+")"
+		FIN
+		HAnnuleDéclaration(reqLigneInterlo)
+	FIN
+ FIN
+
+SI PAS HExécuteRequêteSQL(exeligne,NomSource,hRequêteSansCorrection,reqligne) ALORS
+	Erreur("Erreur de Insertion / MAJ formation",reqligne,HErreurInfo())
+FIN
+SI IDdocument = -1 ALORS
+	Create_repertoire_impressions("FORMATION", IDdocument, "")
+FIN
+
+SI FenEtat(FEN_popup_choix_interlocuteurs) = Inexistant ALORS
+	Ferme()
+FIN
+
+###btn_interlocuteurs
+
+// Résumé : Enregistre les interlocuteur valider dans la bdd
+// Syntaxe :
+//sauv_interlo ()
+//
+// Paramètres :
+//	Aucun
+// Valeur de retour :
+// 	Aucune
+//
+// Exemple :
+// <Indiquez ici un exemple d'utilisation>
+//
+PROCÉDURE sauv_interlo()
+
+vMessage	est une chaîne	= ""
+sNomFichier	est une chaîne
+reqligne	est une chaîne
+exeligne	est une Source de Données 
+
+verifDoc	est un booléen
+
+
+SI INT_doc_glob.Valeur = Vrai ALORS
+	verifDoc = 1
+SINON 
+	verifDoc = 0
+FIN
+
+
+SI Taille(Sai_Libelle) = 0 ALORS
+	vMessage += RC+" - Libellé"
+FIN
+
+SI Taille(Sai_date) = 0 ALORS
+	vMessage += RC+" - Date"
+FIN
+
+SI PAS Cbo_typeform..ValeurMémorisée > 0 ALORS
+	vMessage += RC+" - Type de formation"
+FIN
+
+SI cbo_etat = Null ALORS
+	vMessage += RC+" - Terminer"
+FIN
+
+SI Taille(vMessage) > 0  ALORS
+	Erreur("Veuillez saisir les champs suivants :"+vMessage)
+	RETOUR
+FIN
+
+//variable d'incrémentation de l'id
+id est un entier = Incremente_id("Formation", "form_id")
+//si la formation est ouvert en création ou modification
+SI IDdocument = -1 ALORS
+	reqligne = "INSERT INTO Formation (form_id, form_libelle, form_date, form_etat, Form_type, Formcl_id)"
+	reqligne += " VALUES ("+id+","+quote(Sai_Libelle)+", "+quote(Sai_date)+", "+cbo_etat+", "+Cbo_typeform+", "+quote(Ch_idClient)+");"
+	POUR TOUTE LIGNE DE Table_interlo
+		reqligne += " INSERT INTO Formation_interlocuteurs(Intcl_form, Form_intl)"
+		reqligne += " VALUES ("+Table_interlo.Id_interlo+","+id+")"
+	FIN
+SINON
+	reqligne = "UPDATE Formation SET form_libelle = "+quote(Sai_Libelle)+",  form_date = "+quote(Sai_date)+", form_etat = "+cbo_etat+", Form_type = "+Cbo_typeform
+	reqligne += ", Formcl_id = "+Ch_idClient
+	reqligne += " WHERE form_id = "+IDdocument+";"
+	//chaine qui verifie si interlocuteurs ajouter en double
+	rechDouble		est un entier
+	verifDouble		est un entier
+	valeur			est un entier
+	
+	reqLigneInterlo	est une chaîne 
+	exeLigneInterlo	est une Source de Données 
+	POUR TOUTE LIGNE DE Table_interlo
+		reqLigneInterlo = "SELECT * FROM Formation_interlocuteurs WHERE Intcl_form = "+ Table_interlo.Id_interlo+" AND Form_intl = "+IDdocument
+		HExécuteRequêteSQL(exeLigneInterlo,NomSource,hRequêteSansCorrection,reqLigneInterlo)
+		HLitPremier(exeLigneInterlo)
+		Trace(HTrouve(exeLigneInterlo))
+		SI HTrouve(exeLigneInterlo) = Faux ALORS
+			reqligne += " INSERT INTO Formation_interlocuteurs(Intcl_form, Form_intl)"
+			reqligne += " VALUES ("+Table_interlo.Id_interlo+","+IDdocument+")"
+		FIN
+		HAnnuleDéclaration(reqLigneInterlo)
+	FIN
+FIN
+
+SI PAS HExécuteRequêteSQL(exeligne,NomSource,hRequêteSansCorrection,reqligne) ALORS
+	Erreur("Erreur de Insertion / MAJ formation",reqligne,HErreurInfo())
+FIN
+SI IDdocument = -1 ALORS
+	Create_repertoire_impressions("FORMATION", IDdocument, "")
+FIN
+
+###generation doc
+// Résumé : <indiquez ici ce que fait la procédure>
+// Syntaxe :
+// generationDocument ()
+//
+// Paramètres :
+//	Aucun
+// Valeur de retour :
+// 	Aucune
+//
+// Exemple :
+// <Indiquez ici un exemple d'utilisation>
+//
+PROCÉDURE generationDocument()
+
+//type de formation
+fType		est un entier
+//l'ordre d'apparition du document
+fOrdre		est un entier
+//id du dernier doc de formation client/interlocuteur
+derndoc		est un entier
+// valeur booleenne, Vrai si c'est un document global
+docGlob		est un entier
+//id du document de formation
+idDoc		est un entier
+// Récupère la date système
+dDate		est une Date	= DateSys()
+reqDocfo	est une chaîne
+exeDocfo	est une Source de Données 
+
+reqligne	est une chaîne 
+reqligne = "SELECT IDdoc_fo, Formtype_doc_fo, docfo_ordre, MAX(IDdoc_fo_client) AS derndoc FROM formation_doc_client AS fdocclient"
+reqligne += " INNER JOIN formation_doc AS fdoc ON fdoc.IDdoc_fo	= fdocclient.Docformation_doc_fo_cl"
+reqligne += " WHERE Formationdoc_fo_cl = "+IDdocument+" AND Formtype_doc_fo = "+Cbo_typeform
+reqligne += " GROUP BY docfo_ordre, docfo_libelle, Formtype_doc_fo, IDdoc_fo, cl_intl"
+
+exeligne est une Source de Données
+HExécuteRequêteSQL(exeligne,NomSource,hRequêteSansCorrection,reqligne)
+HLitDernier(exeligne)
+SI HTrouve(exeligne) = Vrai ALORS
+	fType		= exeligne.Formtype_doc_fo
+	fOrdre		= exeligne.docfo_ordre + 1
+	derndoc		= exeligne.derndoc
+	
+	reqDocfo	= "SELECT IDdoc_fo, cl_intl FROM formation_doc"+...
+	" WHERE docfo_ordre = "+fOrdre+" AND Formtype_doc_fo = "+fType
+	HExécuteRequêteSQL(exeDocfo,NomSource,hRequêteSansCorrection,reqDocfo)
+	HLitPremier(exeDocfo)
+	idDoc	= exeDocfo.IDdoc_fo 
+	docGlob	= exeDocfo.cl_intl
+	
+SINON
+	reqDocfo = "SELECT IDdoc_fo, cl_intl FROM formation_doc"+...
+	" WHERE Formtype_doc_fo = "+Cbo_typeform
+	HExécuteRequêteSQL(exeDocfo,NomSource,hRequêteSansCorrection,reqDocfo)
+	HLitPremier(exeDocfo)
+	idDoc	= exeDocfo.IDdoc_fo 
+	docGlob	= exeDocfo.cl_intl
+FIN
+
+
+id est un entier
+reqligne = ""
+SI HTrouve(exeDocfo) = Faux ALORS
+	Info("Impossible de générer un nouveau document. tous les documents ont déjà été générer")
+SINON
+	HLitPremier(exeDocfo)
+	TANTQUE PAS HEnDehors(exeDocfo)
+		docGlob	= exeDocfo.cl_intl
+		SI docGlob = 0 ALORS
+			POUR TOUTE LIGNE DE Table_interlo
+				id			= Incremente_id("formation_doc_client", "IDdoc_fo_client")
+				reqligne	= "INSERT INTO formation_doc_client"+...
+				"(IDdoc_fo_client ,Formationdoc_fo_cl ,Interlocuteur_doc_fo_cl ,Client_doc_fo_cl ,Docformation_doc_fo_cl ,date_gen_env, validation)"+...
+				"VALUES ("+id+", "+IDdocument+", "+Table_interlo.Id_interlo+", "+Ch_idClient+", "+idDoc+", "+quote(dDate)+", "+ 0 +");"
+				
+				HExécuteRequêteSQL(exeligne,NomSource,hRequêteSansCorrection,reqligne)
+				SI ErreurDétectée ALORS
+					Erreur("Problème de génération du document pour l'interlocuteur '"+Table_interlo.Interlocuteur+"' !",Stexte, HErreurInfo())
+					Info(Stexte)
+				FIN
+				
+			FIN
+		SINON
+			id			= Incremente_id("formation_doc_client", "IDdoc_fo_client")
+			reqligne	= "INSERT INTO formation_doc_client"+...
+			"(IDdoc_fo_client ,Formationdoc_fo_cl ,Client_doc_fo_cl ,Docformation_doc_fo_cl ,date_gen_env, validation)"+...
+			"VALUES ("+id+", "+IDdocument+", "+Ch_idClient+", "+idDoc+", "+quote(dDate)+", "+ 0 +");"
+			
+			HExécuteRequêteSQL(exeligne,NomSource,hRequêteSansCorrection,reqligne)
+			SI ErreurDétectée ALORS
+				Erreur("Problème de génération du document pour l'interlocuteur '"+Table_interlo.Interlocuteur+"' !",Stexte, HErreurInfo())
+				Info(Stexte)
+			FIN
+		FIN
+		HLitSuivant(exeDocfo)
+	FIN
+FIN
+HAnnuleDéclaration(exeligne)
+HAnnuleDéclaration(exeDocfo)
+

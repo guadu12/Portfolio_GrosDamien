@@ -1,0 +1,385 @@
+/* *{
+	box-sizing: border-box;
+} */
+
+html
+{
+	scroll-behavior: smooth;
+    /* line-height : 150%; */
+}
+
+body{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+h1, h2, h3, h4
+{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#menu a:hover
+{
+    background-color: gray;
+    color: burlywood;
+    padding: 20px 20px;
+    border-radius: 5px;
+}
+
+ul{
+    text-align: left;
+}
+
+img
+{
+    width: 40%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    border: 1px solid black;
+    transition: 0.5s;
+}
+img:hover
+{
+    transform: scale(2);
+}
+
+#contact2 img
+{
+    width: 100%;
+}
+
+/* h2
+{
+    font-size: 35px;
+}
+
+h3
+{
+    text-decoration: underline;
+}
+
+ul
+{
+    list-style-type: none;
+}
+
+head
+{
+    color: white;
+} */
+
+/* #menu
+{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    background-color: black;
+    z-index: 5;
+}
+
+#menu a
+{
+    color:white;
+    padding: 20px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.5s;
+} */
+
+/* #menu a:hover
+{
+    background-color: gray;
+    color: burlywood;
+    padding: 20px 20px;
+    border-radius: 5px;
+} */
+
+/* a
+{
+    text-decoration: none;
+}
+
+a:visited
+{
+    color: white;
+} */
+
+/* #presentation
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: gray;
+    width: 101%;
+    margin-left: -10px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+} */
+
+#presentation img
+{
+    /* display: flex; */
+    /* width: 20%; */
+    border-radius: 200px;
+    filter:blur(1px);
+    /* margin-bottom: 50px; */
+
+}
+
+/* #presentation h1, h2
+{
+    text-align: center;
+    width: 25%;
+} */
+
+/* #presentation h1
+{
+    font-size: 40px;
+}
+#presentation h2
+{
+    font-size: 25px;
+} */
+
+/* #mes_competences
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+#titre_competences
+{m
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    font-size: 30px;
+}
+
+#titre_competences h2
+{
+    text-align: center;
+}
+
+#les_competences
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#les_competences a
+{
+    color:white
+}
+
+[class*="competence"] ul
+{
+    position:absolute;
+    margin: 0%;
+    padding-bottom: 0%;
+    opacity: 0% ;
+    transition: 0.25s;
+
+}
+
+[class*="competence"]
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    position: relative;
+    padding: 20px 0px;
+    margin: 0.5% 10%;
+    width: 80%;
+    float: left;
+    border-radius: 50px;
+    transition: 0.5s;
+}
+
+[class*="competence"]:hover
+{
+    background-color: white;
+    border: 2px solid gray;
+}
+
+[class*="competence"]:hover ul
+{
+    color:black;
+    opacity: 100%;
+    transition:0.5s;
+} */
+
+/* #realisations
+{
+    margin: 50px 0px;
+}
+#titre_Realisation
+{
+    display: flex;
+    flex-direction: row;
+    justify-content:center;
+    font-size: 30px;
+}
+
+#titre_Realisation h2
+{
+    width: 100%;
+}
+
+#real_slam, #real_sisr
+{
+    text-align: center; 
+}
+
+#les_realisations
+{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around; 
+    padding: 0px 150px;
+} */
+
+/* #les_realisations img
+{
+    width: 100%;
+    border: 1px solid black;
+    transition: 0.5s;
+}
+
+#contenu
+{
+    margin: 35px 285px;
+    margin-left: 15%;
+    width: 70%;
+    padding: 15px 15px;
+    border: 2px solid gray;
+    border-radius: 50px ;
+    text-align: center;
+}
+
+#Creation_session_SNCF img
+{
+    width: 40%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    border: 1px solid black;
+}
+
+#CV_Motivation div
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#CV_Motivation img
+{
+    width: 45%;
+}
+
+#découverte_metiers img
+{
+    width: 35%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    border: 1px solid black;
+}
+
+#Appel_doffre img
+{
+    width: 35%;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    border: 1px solid black;
+}
+
+#AMAphp_1a img:hover
+{
+   transform: scale(2);
+}
+#Creation_session_SNCF img:hover
+{
+   transform: scale(1.8);
+}
+#CV_Motivation img:hover
+{
+   transform: scale(1.5);
+}
+#découverte_metiers img:hover
+{
+   transform: scale(1.8);
+}
+#Appel_doffre img:hover
+{
+    transform: scale(1.8);
+}
+
+#a_propos
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    padding: 50px 0px;
+    margin-left: -10px;
+}
+
+.taille_txt
+{
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    text-align: center;
+    width: 45%;
+}
+
+footer
+{
+    display: flex;
+    justify-content: space-around;
+    margin-left: -10px;
+    color: white;
+    background-color: black;
+}
+
+#contact
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin: 50px 0px;
+}
+
+#contact p
+{
+    margin: 10px;
+}
+
+#contact h4
+{
+    margin: auto;
+}
+
+#contact2
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin: 50px 0px;
+}
+
+#contact2 p
+{
+    margin: 5px;
+}
+
+#contact2 img
+{
+    float: right;
+} */

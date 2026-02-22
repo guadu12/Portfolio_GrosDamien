@@ -1,0 +1,12 @@
+### lire une donnée d'une requête
+dernNum est une chaîne = "SELECT typechrono_id FROM Type_chronologie WHERE typechrono_id = (SELECT MAX(typechrono_id) FROM Type_chronologie)"
+
+reqDerNum est une Source de Données
+SI HExécuteRequêteSQL(reqDerNum,NomSource, hRequêteSansCorrection, dernNum) ALORS
+	HLitPremier(reqDerNum)
+	TANTQUE PAS HEnDehors(reqDerNum)
+		prochNum est un entier = reqDerNum.typechrono_id
+		Info(prochNum)
+		HLitSuivant(reqDerNum)
+	FIN
+FIN
