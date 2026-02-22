@@ -6,13 +6,13 @@
 		{% include 'header.html'%}
 
 
-        <section id="mes_competences" class="container-fluid d-flex flex-column align-items-center pt-3 pb-3">
+        <section id="mes_competences" class="container-fluid align-items-center pt-3 pb-3">
         <!-- <section id="mes_competences" class="container column align-items-center"> -->
-            <div id="titre_competences" class="pt-3"><h2>{{TITRE_COMPETENCES}}</h2></div>
-			<div id="les_competences" class="grid justify-content-center row-gap-3 column-gap-3  row pt-3">
+            <div id="titre_competences" class="text-center pt-3"><h2>{{TITRE_COMPETENCES}}</h2></div>
+			<div id="les_competences" class="justify-content-center row-gap-3 column-gap-3  row pt-3">
                 {% set indice = 0 %}
                 {% for i in range(NUM_COMPETENCE | length) %}
-                    <div div={{NUM_COMPETENCE[i]}} class="col-5 pt-2 text-bg-secondary rounded-4 text-center">
+                    <div div={{NUM_COMPETENCE[i]}} class="col-10 col-lg-5 pt-2 text-bg-secondary rounded-4 text-center">
                         <a class="link-light">
                             <h3>{{COMPETENCES[i][0]}}</h3>
                             <ul>
@@ -26,27 +26,27 @@
                 </div>
 		</section>
 
-        <section id="realisations" class="container d-flex flex-column align-items-center pt-5 pb-3">
-			<div id="titre_Realisation" class="d-inline-flex pb-5">
+        <section id="realisations" class="container-lg pt-5 pb-3">
+			<div id="titre_Realisation" class="text-center pb-5">
                 <h2>{{TITRE_REALISATION}}</h2>
             </div>
-            <section id="les_realisations" class=" d-flex flex-column gap-5">
+            <section id="les_realisations" class="gap-5">
                 {% if articles %}
                 <h3>Réalisation orienté developpement</h3>
-                    <div id ="real_slam" class="grid justify-content-center row-gap-3 column-gap-3  row pt-3">
+                    <div id ="real_slam" class="justify-content-center row-gap-3 column-gap-3  row pt-3">
                         {% for article in articles_page.object_list %}
                             {% if article.type == "SLAM" %}
-                                <a href="{{article.slug}}.html" class="col-5 pt-2 text-bg-secondary rounded-4 text-center"><div id={{article.slug}}>
+                                <a href="{{article.slug}}.html" class="col-10 col-md-5 pt-2 text-bg-secondary rounded-4 text-center"><div id={{article.slug}}>
                                     {{article.summary}}
                                 </div></a>
                             {% endif %}
                         {% endfor %}
                     </div>
-                    <div id="real_sisr" class="grid justify-content-center row-gap-3 column-gap-3  row pt-3 pb-3">
+                    <div id="real_sisr" class="justify-content-center row-gap-3 column-gap-3  row pt-3 pb-3">
                         <h3>Réalisation orienté réseau</h3>
                         {% for article in articles_page.object_list %}
                             {% if article.type == "SISR" %}
-                                <a href="{{article.slug}}.html" class="col-5 pt-2 text-bg-secondary rounded-4 text-center"><div id={{article.slug}}>
+                                <a href="{{article.slug}}.html" class="col-10 col-sm-5 pt-2 text-bg-secondary rounded-4 text-center"><div id={{article.slug}}>
                                     {{article.summary}}
                                 </div></a>
                             {% endif %}

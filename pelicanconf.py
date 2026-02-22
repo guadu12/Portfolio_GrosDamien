@@ -39,7 +39,8 @@ THEME = 'themes/mon-theme-pelican'
 THEME_STATIC_DIR = 'themes/mon-theme-pelican/static'
 CSS_FILE = 'style.css'
 
-SITUATION = 'Étudiant en BTS SIO option SLAM'
+# SITUATION = 'Étudiant en BTS SIO option SLAM'
+SITUATION = "Diplômé d'un BTS SIO option SLAM"
 
 MENU = (
 	('#presentation', 'Accueil'),
@@ -119,4 +120,3 @@ ENTREPRISE = (
         )
 
 # a modifier
-
