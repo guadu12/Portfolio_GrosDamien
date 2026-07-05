@@ -3,7 +3,7 @@ Date: 2023-06-26 17:00
 Modified: 2023-06-26 17:00 17:00
 Category: Python
 Tags: pelican, publishing
-Slug: Axis_solution
+Slug: Axis_solution_copy
 Authors: Gros damien
 Summary: Mission implémentation d’une solution de gestion des Formations sur l’application de l’entreprise, durant le stage de fin de première année du BTS SIO, dans l'entreprise Axis Solution
 type: SLAM

@@ -4,11 +4,13 @@
     
     <body class="gap-3">
         <div class="container">
-            {% if articles %}
-            <div id={{article.slug}} class="text-center border border-2 border-secondary-subtle rounded-4 p-4">
-                {{article.content}}
+            <div class="row">
+                {% if articles %}
+                <div id={{article.slug}} class="text-center border border-2 border-secondary-subtle rounded-4 p-4">
+                    {{article.content}}
+                </div>
+                {% endif %}
             </div>
-            {% endif %}
         </div>
 
         <footer>

@@ -43,10 +43,24 @@ img:hover
     transform: scale(2);
 }
 
-#contact2 img
-{
-    width: 100%;
+@media screen and (max-width: 767px) {
+    #navbarNav .nav .nav-item
+    {
+        text-align: center;
+        width: 100%;
+    }
+
+
+    #stage_uca img
+    {
+        width: 80%;
+    }
 }
+
+/* #contact2 img
+{
+    width: 75%;
+} */
 
 /* h2
 {

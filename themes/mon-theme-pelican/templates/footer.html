@@ -1,15 +1,17 @@
-<footer id="bas" class="d-flex justify-content-around pt-3 pb-3 bg-dark text-white">
-			<div id="contact" class="d-flex flex-column ">
-                <h4>Contact</h4>
-                {% for titre  in CONTACT %}
-					<p>{{titre}}</p>
-				{% endfor %}
-			</div>
-            
-            <div id="contact2" class="d-flex flex-column ">
-				{% for titre  in ENTREPRISE %}
-					<p>{{titre}}</p>
-				{% endfor %}
-                <img src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/images/logo.png" alt="error">
-			</div>
-        </footer>
+<footer id="bas" class="container-fluid pt-3 pb-3 bg-dark text-white">
+	<div class="row justify-content-evenly text-center text-lg-start">
+		<div id="contact" class="col-12 col-lg-5">
+			<h4>Contact</h4>
+			{% for titre  in CONTACT %}
+				<p>{{titre}}</p>
+			{% endfor %}
+		</div>
+		
+		<div id="contact2" class="col-12 col-lg-5 text-lg-end">
+			{% for titre  in ENTREPRISE %}
+				<p>{{titre}}</p>
+			{% endfor %}
+			<img src="/{{ THEME_STATIC_DIR }}/images/logo.png" alt="error">
+		</div>
+	</div>
+</footer>
