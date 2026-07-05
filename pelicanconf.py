@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
+from datetime import datetime, date, time, timedelta
 
 AUTHOR = 'Gros Damien'
 SITENAME = 'ePortfolio Gros Damien'
@@ -40,7 +41,7 @@ THEME_STATIC_DIR = 'themes/mon-theme-pelican/static'
 CSS_FILE = 'style.css'
 
 # SITUATION = 'Étudiant en BTS SIO option SLAM'
-SITUATION = "Diplômé d'un BTS SIO option SLAM"
+SITUATION = "Technicien applicatif intéropérabilité"
 
 MENU = (
 	('#presentation', 'Accueil'),
@@ -100,13 +101,25 @@ COMPETENCES = (
         
 TITRE_REALISATION = 'Réalisations professionnelles'
 
+naissance = date(2003, 5, 30)
+aujourdhui = date.today()
+
+# Calcul de l'âge en années (précis, tient compte du mois/jour)
+age = aujourdhui.year - naissance.year - (
+    (aujourdhui.month, aujourdhui.day) < (naissance.month, naissance.day)
+)
+
+POSTE = 'Technicien applicatif et intéropérabilité pour la société NEXUS/FRANCE à bellerive-sur-allier.'
+
+SOCIETE = ''
+
+CURSUS = 'Avant cela j\'ai obtenu un BAC STI2D option SIN qui nous a formé à du C++ (Arduino) et à quelques notions de PHP, qui m\'a par la suite orienté sur un BTS SIO option SLAM (Solution logiciel etapplication métier), qui m\a donc formé au au postes de developpeur métier avec dans le cursus la formation au développement Web (frameworks Symfony et Django / Front-End avec le framework Bootstrap. Mais également au développement d\'application multi-plateformes (JavaFX), d\'applications mobiles Android et sur l\'analyse et l\'administration des bases de données. Ce BTS, comportait une deuxieme spécialités orienté réseaux donc nosu avons également eu une formation commune.'
+
 TEXT_A_PROPOS = (
-        'Bonjour, je m\'appelle GROS Damien je suis née en 2003 j\'ai donc 20 ans et je suis actuellement étudiant en BTS SIO au lycée général et technologique Albert Londres à Cusset.',
-        'Ce BTS, comporte deux spécialités, une spécialité tournée vers le développement et l\'autre tourné vers le réseau. J\'ai pour ma part choisi la première, Solutions Logicielles et Applications Métiers (SLAM);',
-        'La spécialité SLAM nous forme au développement Web (frameworks Symfony et Django / Front-End avec le framework Bootstrap. Mais également au développement d\'application multi-plateformes (JavaFX), d\'applications mobiles Android et sur l\'analyse et l\'administration des bases de données.',
-        'Avant cela j\'ai obtenu un BAC STI2D option SIN qui nous a formé à du C++ (Arduino) et à quelques notions de PHP',
+        'Bonjour, je m\'appelle GROS Damien je suis née en 2003 j\'ai donc ' + str(age) +' ans et je suis actuellement' + POSTE+'.',
+        CURSUS,
 	    'Dans la vie je m\'intéresse à beaucoup de chose différente, je suis de nature plutôt curieuse mais avant tout j\'aime le volley et les jeux vidéos',
-        'bienvenu à vous dans ce portfolio qui témoigne de ma progression dans la formation du BTS SIO Option SLAM.'
+        'bienvenu à vous dans ce portfolio qui témoigne de ma progression dans ma vie étudiante ainsi que professionnel.'
          )
 CONTACT = (
         'Mail : Dgros398@protonmail.com',
